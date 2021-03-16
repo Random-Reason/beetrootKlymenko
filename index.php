@@ -1,15 +1,18 @@
 <?php
 session_start();
 if (!$_SESSION['Alina']) {
-    header("Location: login.php");
-    echo "Нет доступа, залогиньтесь";
+    header('HTTP/1.0 403 Forbidden');
+echo 'You are forbidden!';
     exit;
-} echo "Вы авторизованы!";
-    if($_GET['do'] == 'logout'){
+};
+if($_GET['do'] = "logout"){
         unset($_SESSION['Alina']);
         session_destroy();
     }
-    ?>
+$str = $_COOKIE ["arr"];
+$array = unserialize($str);
+//print_r ($array);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +20,7 @@ if (!$_SESSION['Alina']) {
     <title>Алине надо выйти</title>
 </head>
 <body>
+<p>Privet!</p>
 <a href="login.php?do=logout">Logout</a>
 </body>
 </html>

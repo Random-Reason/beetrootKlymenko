@@ -6,10 +6,12 @@ if ($_POST['submit']) {
     if ($login == $_POST['login'] && $pass == $_POST['pass']) {
         $_SESSION['Alina'] = $login;
         header("Location: index.php");
-        exit;
     } else
         echo '<p>Логин или пароль неверны!</p>';
 }
+$_POST = array( 'login' => "$login", 'password' => "$pass");
+$result = serialize($_POST);
+setcookie("arr", $result, time()+60);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +20,7 @@ if ($_POST['submit']) {
     <title>Форма авторизации</title>
 </head>
 <body>
-    <a href="index.php?">Моя страница</a>
+<a href='index.php'> Моя страница</a>
     <h3> Форма авторизации </h3>
     <form action="login.php" method="POST">
        <p> <label> Введите Ваш логин</label> <input name="login" required /></p>
